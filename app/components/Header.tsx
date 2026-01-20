@@ -81,7 +81,7 @@ export default function Header() {
           >
             <span className="text-2xl">🧮</span>
             <span className="hidden sm:inline">Fast Calculator</span>
-            <span className="sm:hidden">Calcz</span>
+            <span className="sm:hidden">Fast Calculator</span>
           </Link>
 
           {/* Desktop Navigation */}

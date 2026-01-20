@@ -23,7 +23,7 @@ export default function Footer() {
             href="/terms"
             className="underline hover:text-indigo-600 transition-colors"
           >
-            Terms of Service
+            Terms of Service 
           </a>
         </div>
       </div>

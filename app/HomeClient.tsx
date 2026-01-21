@@ -258,10 +258,10 @@ export default function HomeClient() {
         {/* HERO */}
         <header className="text-center max-w-2xl mx-auto mb-8">
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-3 tracking-tight">
-            Calculators That Actually Work
+            Calculators That Work
           </h1>
           <p className="text-base sm:text-lg text-gray-600">
-            Mortgage payments, loan EMI, BMI, GPA, discounts, calories, tips. Get instant answers without the BS.
+            Mortgage payments, loan EMI, BMI, GPA, discounts, calories, tips, and more.
           </p>
         </header>
 
@@ -305,8 +305,8 @@ export default function HomeClient() {
   <>
     <div className="mb-8 max-w-xl mx-auto">
       <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200 text-center">
-        <div className="text-4xl mb-3">🧮</div>
-        <h2 className="text-xl font-bold text-gray-900 mb-2">Need Quick Math?</h2>
+        
+        <h2 className="text-xl font-bold text-gray-900 mb-2">Need Quick Calculations?</h2>
         <p className="text-gray-600 mb-4 text-sm">Basic calculator for simple arithmetic</p>
         <button 
           onClick={() => {

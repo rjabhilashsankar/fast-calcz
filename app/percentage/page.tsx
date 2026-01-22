@@ -1,9 +1,10 @@
+import type { Metadata } from "next";
 import PercentageCalculator from "../discount-calculator";
 import { usePageSEO } from "@/lib/usePageSEO";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const seo = usePageSEO("/age");  
-  
+  const seo = usePageSEO("/percentage");
+
   return {
     title: seo.title,
     description: seo.description,
@@ -11,10 +12,11 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: seo.title,
       description: seo.description,
-      type: 'website',
+      type: "website",
     },
   };
 }
+
 export default function PercentagePage() {
   return <PercentageCalculator />;
 }

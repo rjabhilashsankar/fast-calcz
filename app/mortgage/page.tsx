@@ -3,7 +3,7 @@ import MortgageCalculator from "../mortgage-calculator";
 import { usePageSEO } from "@/lib/usePageSEO";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const seo = usePageSEO("/age");  
+  const seo = usePageSEO("/mortgage");  
   
   return {
     title: seo.title,

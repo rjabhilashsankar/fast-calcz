@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 
 
 export async function generateMetadata(): Promise<Metadata> {
-  const seo = usePageSEO("/age");  // ← Function works here!
+  const seo = usePageSEO("/age"); 
   
   return {
     title: seo.title,

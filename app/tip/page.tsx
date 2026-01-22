@@ -3,7 +3,7 @@ import TipCalculator from "../tip-calculator";
 import { usePageSEO } from "@/lib/usePageSEO";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const seo = usePageSEO("/age");  
+  const seo = usePageSEO("/tip");  
   
   return {
     title: seo.title,

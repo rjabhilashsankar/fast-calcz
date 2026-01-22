@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://www.fastcalculator.app/
+Host: https://www.fastcalculator.app
 
 # Sitemaps
 Sitemap: https://www.fastcalculator.app/sitemap.xml

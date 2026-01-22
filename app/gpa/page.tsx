@@ -3,7 +3,7 @@ import GPACalculator from "../gpa-calculator";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const seo = usePageSEO("/age");  
+  const seo = usePageSEO("/gpa");  
   
   return {
     title: seo.title,

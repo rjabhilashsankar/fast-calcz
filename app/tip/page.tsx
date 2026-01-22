@@ -1,8 +1,21 @@
+import { Metadata } from "next";
 import TipCalculator from "../tip-calculator";
 import { usePageSEO } from "@/lib/usePageSEO";
 
-export const metadata = usePageSEO("/tip");
-
+export async function generateMetadata(): Promise<Metadata> {
+  const seo = usePageSEO("/age");  
+  
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      type: 'website',
+    },
+  };
+}
 export default function TipPage() {
   return <TipCalculator />;
 }

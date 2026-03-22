@@ -10,7 +10,6 @@ export interface PageSEO {
   category?: string;
 }
 
-// Default/fallback SEO data
 const DEFAULT_SEO: PageSEO = {
   title: "Free Online Calculators – Mortgage, EMI, BMI, GPA & More",
   description: "Free online calculators for finance, health, academics, and daily life. Calculate mortgage payments, loan EMI, BMI, GPA, discounts, tips, and more instantly.",
@@ -18,20 +17,12 @@ const DEFAULT_SEO: PageSEO = {
 };
 
 /**
- * Get SEO data for a specific page
- * @param href - The page path (e.g., "/mortgage", "/bmi")
- * @returns SEO metadata for the page
+ * Get SEO data for a specific page (SERVER-SIDE SAFE)
+ * Use this in generateMetadata() and server components
  */
-export function usePageSEO(href: string): PageSEO {
-  // Normalize the href (remove trailing slashes, ensure leading slash)
+export function getPageSEO(href: string): PageSEO {
   const normalizedHref = href.trim().replace(/\/+$/, '') || '/';
   
-  // Find matching page data
-  const pageData: SEOPageData | undefined = seoIntentGraph.find(
-    (item) => item.href === normalizedHref
-  );
-
-  // Return default SEO for homepage
   if (normalizedHref === '/' || normalizedHref === '') {
     return {
       title: "Instant Calculators for Real Life – Mortgage, EMI, BMI, GPA & More",
@@ -40,7 +31,10 @@ export function usePageSEO(href: string): PageSEO {
     };
   }
 
-  // Return page-specific SEO if found
+  const pageData: SEOPageData | undefined = seoIntentGraph.find(
+    (item) => item.href === normalizedHref
+  );
+
   if (pageData) {
     return {
       title: pageData.title,
@@ -53,12 +47,6 @@ export function usePageSEO(href: string): PageSEO {
     };
   }
 
-  // Log warning in development if page not found
-  if (process.env.NODE_ENV === 'development') {
-    console.warn(`SEO data not found for: ${normalizedHref}. Using default fallback.`);
-  }
-
-  // Return fallback SEO with dynamic title based on href
   const pageName = normalizedHref
     .split('/')
     .filter(Boolean)
@@ -74,35 +62,29 @@ export function usePageSEO(href: string): PageSEO {
 }
 
 /**
- * Get all available calculator paths
- * Useful for generating sitemaps or navigation
+ * CLIENT-SIDE hook version (for use in React components)
+ * DO NOT use in generateMetadata()
  */
+export function usePageSEO(href: string): PageSEO {
+  return getPageSEO(href);
+}
+
+// ... rest of your existing functions
 export function getAllCalculatorPaths(): string[] {
   return seoIntentGraph.map(item => item.href);
 }
 
-/**
- * Get calculators by category
- */
 export function getCalculatorsByCategory(category: string): SEOPageData[] {
   return seoIntentGraph.filter(item => item.category === category);
 }
 
-/**
- * Get all unique categories
- */
 export function getAllCategories(): string[] {
   return Array.from(new Set(seoIntentGraph.map(item => item.category)));
 }
 
-/**
- * Search calculators by keyword or intent
- */
 export function searchCalculators(query: string): SEOPageData[] {
   const lowerQuery = query.toLowerCase().trim();
-  
   if (!lowerQuery) return [];
-
   return seoIntentGraph.filter(item => 
     item.title.toLowerCase().includes(lowerQuery) ||
     item.metaDescription.toLowerCase().includes(lowerQuery) ||

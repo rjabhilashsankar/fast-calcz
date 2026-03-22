@@ -3,7 +3,7 @@ import BillSplitter from "../bill-splitter";
 import { usePageSEO } from "@/lib/usePageSEO";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const seo = usePageSEO("/age");  
+  const seo = usePageSEO("/bill-split");  
   
   return {
     title: seo.title,

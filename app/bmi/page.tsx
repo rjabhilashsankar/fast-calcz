@@ -4,6 +4,7 @@ import { getPageSEO } from "@/lib/usePageSEO";
 
 export async function generateMetadata(): Promise<Metadata> {
 const seo = getPageSEO("/bmi");   
+
   return {
     title: seo.title,
     description: seo.description,

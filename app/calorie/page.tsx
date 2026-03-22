@@ -3,7 +3,6 @@ import CalorieCalculator from "../calorie-calculator";
 import { getPageSEO } from "@/lib/usePageSEO";
 export async function generateMetadata(): Promise<Metadata> {
   const seo = getPageSEO("/calorie");  
-  
   return {
     title: seo.title,
     description: seo.description,
